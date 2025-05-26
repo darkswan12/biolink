@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bio Link</title>
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='favicon.jpg') }}" />
+    
+    <!-- CSS utama -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    
+    <!-- FontAwesome untuk icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+    <div class="container">
+        <img src="{{ profile.avatar }}" alt="Avatar" class="avatar" />
+        <h1>{{ profile.name }}</h1>
+        <p class="bio">{{ profile.bio }}</p>
+
+        <!-- Icon bulat sosial media atas -->
+        <div class="icon-bar">
+            {% for link in profile.links %}
+                {% if link.name in ['GitHub', 'LinkedIn', 'Instagram', 'Tiktok'] %}
+                <a href="{{ link.url }}" target="_blank" title="{{ link.name }}">
+                    <i class="{{ link.prefix }} fa-{{ link.icon }}"></i>
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="text-links">
+            {% for link in profile.links %}
+                {% if link.name not in ['GitHub', 'LinkedIn', 'Instagram', 'Tiktok'] %}
+                <a href="{{ link.url }}" target="_blank">
+                    <i class="{{ link.prefix }} fa-{{ link.icon }}" style="margin-right: 8px;"></i>
+                    {{ link.name }}
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 1rem; font-size: 0.9rem; color: #888;">
+        © 2025 Darmawan Suhara. Created with Flask &amp; Love.
+    </footer>
+</body>
+</html>
