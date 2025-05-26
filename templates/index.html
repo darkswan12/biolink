@@ -21,7 +21,7 @@
         <!-- Icon bulat sosial media atas -->
         <div class="icon-bar">
             {% for link in profile.links %}
-                {% if link.name in ['GitHub', 'LinkedIn', 'Instagram', 'Tiktok'] %}
+                {% if link.name in ['GitHub', 'LinkedIn', 'Instagram', 'Tiktok', 'Discord'] %}
                 <a href="{{ link.url }}" target="_blank" title="{{ link.name }}">
                     <i class="{{ link.prefix }} fa-{{ link.icon }}"></i>
                 </a>
@@ -31,7 +31,7 @@
 
         <div class="text-links">
             {% for link in profile.links %}
-                {% if link.name not in ['GitHub', 'LinkedIn', 'Instagram', 'Tiktok'] %}
+                {% if link.name not in ['GitHub', 'LinkedIn', 'Instagram', 'Tiktok','Discord'] %}
                 <a href="{{ link.url }}" target="_blank">
                     <i class="{{ link.prefix }} fa-{{ link.icon }}" style="margin-right: 8px;"></i>
                     {{ link.name }}
